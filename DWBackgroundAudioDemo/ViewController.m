@@ -21,7 +21,7 @@
     //DWBackgroundAudio *back = [DWBackgroundAudio backgroundAudioCGRect:self.view.bounds FillType:0 URLPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Ne-Yo-Closer.mp3" ofType:nil]]];
     
     DWBackgroundAudio *back1 = [DWBackgroundAudio backgroundAudioCGRect:self.view.bounds FillType:0 URLPath:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"video.mp4" ofType:nil]]];
-        
+    
     //[self.view addSubview:back];
     [self.view addSubview:back1];
     [back1 getAudioTime:^(float currentTime, float totalTime) {

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 typedef enum : NSUInteger {
     VideoGravityResize,//拉伸填充层边界
@@ -17,6 +18,9 @@ typedef enum : NSUInteger {
 typedef void (^AudioTime)(float currentTime, float totalTime);
 
 @interface DWBackgroundAudio : UIView
+
+/** 播放器对象 */
+@property(nonatomic, strong) AVPlayer *player;
 
 /** 当前播放时间/总时长 */
 @property(nonatomic, copy) AudioTime audioTime;

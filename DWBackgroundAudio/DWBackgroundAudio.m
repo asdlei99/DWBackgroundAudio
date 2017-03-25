@@ -7,12 +7,8 @@
 //
 
 #import "DWBackgroundAudio.h"
-#import <AVFoundation/AVFoundation.h>
 
 @interface DWBackgroundAudio ()
-
-/** 播放器对象 */
-@property(nonatomic, strong) AVPlayer *player;
 
 /** 视图路径 */
 @property(nonatomic, strong) NSURL *urlPath;
