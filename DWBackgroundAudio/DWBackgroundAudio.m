@@ -58,18 +58,13 @@
 
 -(AVPlayer *)player{
     if (!_player) {
-        AVPlayerItem *playerItem=[self getPlayItem];
-        _player=[AVPlayer playerWithPlayerItem:playerItem];
+        _player=[AVPlayer playerWithPlayerItem:[AVPlayerItem playerItemWithURL:self.urlPath]];
         [self addProgressObserver];
         [self addNotification];
     }
     return _player;
 }
 
--(AVPlayerItem *)getPlayItem{
-    AVPlayerItem *playerItem=[AVPlayerItem playerItemWithURL:self.urlPath];
-    return playerItem;
-}
 #pragma mark - 通知
 -(void)addNotification{
     //给AVPlayerItem添加播放完成通知
