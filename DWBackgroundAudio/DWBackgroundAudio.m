@@ -7,6 +7,7 @@
 //
 
 #import "DWBackgroundAudio.h"
+#import <Foundation/Foundation.h>
 
 @interface DWBackgroundAudio ()
 
@@ -15,6 +16,9 @@
 
 /** 填充方式 */
 @property(nonatomic, assign) FillType fillType;
+
+/** 播放器层 */
+@property(nonatomic, strong) AVPlayerLayer *playerLayer;
 
 @end
 
@@ -34,26 +38,38 @@
 
 #pragma mark - 私有方法
 -(void)setupUI{
-     //创建播放器层
-    AVPlayerLayer *playerLayer=[AVPlayerLayer playerLayerWithPlayer:self.player];
+    
     switch (self.fillType) {
         case 0:
-            playerLayer.videoGravity = AVLayerVideoGravityResize;
+            self.playerLayer.videoGravity = AVLayerVideoGravityResize;
             break;
-            case 1:
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+        case 1:
+            self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
             break;
         case 2:
-            playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+            self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
             break;
         default:
-            playerLayer.videoGravity = AVLayerVideoGravityResize;
+            self.playerLayer.videoGravity = AVLayerVideoGravityResize;
             break;
     }
-    playerLayer.frame=self.bounds;
-    playerLayer.backgroundColor = self.backgroundColor.CGColor;
-    [self.layer addSublayer:playerLayer];
+    self.playerLayer.frame = self.bounds;
+    self.playerLayer.backgroundColor = self.backgroundColor.CGColor;
+    [self.layer addSublayer:self.playerLayer];
     [self.player play];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+- (void)orientationChange {
+    NSLog(@"%ld", [[UIDevice currentDevice] orientation]);
+}
+
+- (AVPlayerLayer *)playerLayer {
+    if (!_playerLayer) {
+        _playerLayer = [AVPlayerLayer playerLayerWithPlayer:self.player];
+    }
+    return _playerLayer;
 }
 
 -(AVPlayer *)player{
@@ -88,7 +104,7 @@
         if (strongSelf.audioTime) {
             strongSelf.audioTime(CMTimeGetSeconds(time), CMTimeGetSeconds([strongSelf.player.currentItem duration]));
         }
-        }];
+    }];
 }
 
 - (void)getAudioTime:(AudioTime)audioTime {
@@ -96,5 +112,7 @@
         audioTime(currentTime, totalTime);
     };
 }
+
+
 
 @end
