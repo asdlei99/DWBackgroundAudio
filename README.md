@@ -3,7 +3,9 @@
 
 ---
 ![示例图](https://github.com/dwanghello/DWBackgroundAudio/blob/master/视频背景.gif)
-    
+
+# pod 'DWBackgroundAudio'
+
     DWBackgroundAudio *back1 = [DWBackgroundAudio
      backgroundAudioCGRect:self.view.bounds 
      FillType:0 
