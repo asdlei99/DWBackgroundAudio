@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "DWBackgroundAudio"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "音频背景"
 
   # This description is used to generate tags and improve search results.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-- 音频背景，暂未支持横屏
+- 使用短视频作为背景使用，暂未支持横屏
                    DESC
 
   s.homepage     = "https://github.com/dwanghello/DWBackgroundAudio"
