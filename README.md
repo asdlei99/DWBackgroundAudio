@@ -1,4 +1,4 @@
-[![CocoaPods](http://img.shields.io/cocoapods/v/DWUNlock.svg?style=flat)](http://cocoapods.org/?q=DWUNlock)
+[![CocoaPods](http://img.shields.io/cocoapods/v/DWBackgroundAudio.svg?style=flat)](http://cocoapods.org/?q=DWBackgroundAudio)
 # DWBackgroundAudio
 # 音频背景
 
